@@ -26,9 +26,6 @@
       <a href="#visi-misi">Visi &amp; Misi</a>
       <a href="#jurusan">Jurusan</a>
       <a href="#ppdb" class="menu-cta">PPDB</a>
-      <a href="#ppdb" class="menu-cta">PPDB</a>
-<button class="tema-btn" id="tema-btn" type="button" aria-label="Ganti tema terang atau gelap">🌙</button>
-</nav>
     </nav>
   </header>
 
@@ -198,28 +195,6 @@
       "No. telepon: " + document.getElementById("telp").value;
 
     window.open("https://wa.me/" + NOMOR_WA + "?text=" + encodeURIComponent(pesan), "_blank");
-  });
-</script>
-
-<script>
-  const root = document.documentElement;
-  const tombol = document.getElementById("tema-btn");
-
-  function setTema(tema) {
-    root.setAttribute("data-theme", tema);
-    tombol.textContent = tema === "dark" ? "☀️" : "🌙";
-    try { localStorage.setItem("tema", tema); } catch (e) {}
-  }
-
-  let awal = null;
-  try { awal = localStorage.getItem("tema"); } catch (e) {}
-  if (!awal) {
-    awal = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  }
-  setTema(awal);
-
-  tombol.addEventListener("click", function () {
-    setTema(root.getAttribute("data-theme") === "dark" ? "light" : "dark");
   });
 </script>
 
