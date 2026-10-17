@@ -26,6 +26,9 @@
       <a href="#visi-misi">Visi &amp; Misi</a>
       <a href="#jurusan">Jurusan</a>
       <a href="#ppdb" class="menu-cta">PPDB</a>
+      <a href="#ppdb" class="menu-cta">PPDB</a>
+<button class="tema-btn" id="tema-btn" type="button" aria-label="Ganti tema terang atau gelap">🌙</button>
+</nav>
     </nav>
   </header>
 
@@ -146,7 +149,7 @@
 
         <div class="ppdb-info">
           <p><strong>Jadwal:</strong> [32 Februari 2027]</p>
-          <p><strong>Lokasi pendaftaran:</strong> [LOBBY SMKS HUTAMA]</p>
+          <p><strong>Lokasi pendaftaran:</strong> <a class="wa-link" href="https://www.google.com/maps/search/?api=1&query=SMKS+HUTAMA+Jl.+Raya+Hankam+No.+37+Bekasi" target="_blank" rel="noopener">Jl. Raya Hankam No. 37, Pondok Gede, Kota Bekasi</a></p>
           <p><strong>Kontak:</strong> <a class="wa-link" href="https://wa.me/081234567890?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20PPDB%20SMKS%20HUTAMA" target="_blank" rel="noopener">0812-3456-7890 (WhatsApp)</a></p>
         </div>
 
@@ -195,6 +198,28 @@
       "No. telepon: " + document.getElementById("telp").value;
 
     window.open("https://wa.me/" + NOMOR_WA + "?text=" + encodeURIComponent(pesan), "_blank");
+  });
+</script>
+
+<script>
+  const root = document.documentElement;
+  const tombol = document.getElementById("tema-btn");
+
+  function setTema(tema) {
+    root.setAttribute("data-theme", tema);
+    tombol.textContent = tema === "dark" ? "☀️" : "🌙";
+    try { localStorage.setItem("tema", tema); } catch (e) {}
+  }
+
+  let awal = null;
+  try { awal = localStorage.getItem("tema"); } catch (e) {}
+  if (!awal) {
+    awal = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  setTema(awal);
+
+  tombol.addEventListener("click", function () {
+    setTema(root.getAttribute("data-theme") === "dark" ? "light" : "dark");
   });
 </script>
 
